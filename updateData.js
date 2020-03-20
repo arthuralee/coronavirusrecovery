@@ -33,6 +33,10 @@ function processData(data) {
     .sort((a, b) => b[1][b[1].length - 1] - a[1][a[1].length - 1]);
 }
 
+function getDates(data) {
+  return data[0].slice(-14);
+}
+
 async function getData() {
   return new Promise(async (resolve, reject) => {
     const data = [];
@@ -54,4 +58,5 @@ async function getData() {
 
 getData().then(result => {
   fs.writeFileSync("./src/data.json", JSON.stringify(processData(result)));
+  fs.writeFileSync("./src/dates.json", JSON.stringify(getDates(result)));
 });

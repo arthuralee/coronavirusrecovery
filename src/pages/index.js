@@ -1,5 +1,6 @@
 import React from "react";
 import data from "../data.json";
+import dates from "../dates.json";
 
 import "./reset.css";
 import "./index.css";
@@ -26,7 +27,7 @@ const IndexPage = () => (
         </a>
         ].
       </p>
-      <Chart data={data} />
+      <Chart data={data} dates={dates} />
       <p>
         Data source:{" "}
         <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">

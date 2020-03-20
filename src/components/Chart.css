@@ -13,6 +13,10 @@
   display: flex;
 }
 
+.case-number-row.date-row {
+  color: #ccc;
+}
+
 .number-display {
   flex-shrink: 0;
   font-weight: bold;

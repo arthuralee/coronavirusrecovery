@@ -1,6 +1,5 @@
 import React from "react";
 import "./Chart.css";
-import { getText } from "domutils";
 
 function getBackgroundColor(num) {
   if (num === 0) {
@@ -53,8 +52,20 @@ const Country = ({ rowData }) => (
   </div>
 );
 
-export default ({ data }) => (
+const HeaderRow = ({ dates }) => (
+  <div className="row">
+    <div className="row-country-header"></div>
+    <div className="case-number-row date-row">
+      {dates.map(date => (
+        <div className="number-display">{date.slice(0, -3)}</div>
+      ))}
+    </div>
+  </div>
+);
+
+export default ({ data, dates }) => (
   <div>
+    <HeaderRow dates={dates} />
     {data.map((row, i) => (
       <Country rowData={row} key={i} />
     ))}
