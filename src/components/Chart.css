@@ -1,0 +1,23 @@
+.row {
+  align-items: center;
+  display: flex;
+  margin: 8px 0;
+}
+
+.row-country-header {
+  text-overflow: ellipsis;
+  width: 150px;
+}
+
+.case-number-row {
+  display: flex;
+}
+
+.number-display {
+  flex-shrink: 0;
+  font-weight: bold;
+  margin: 2px;
+  padding: 10px 5px;
+  text-align: center;
+  width: 55px;
+}
