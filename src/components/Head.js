@@ -63,7 +63,7 @@ function Head({ description, lang, meta }) {
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+        href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"
         rel="stylesheet"
       />
     </Helmet>
