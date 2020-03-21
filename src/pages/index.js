@@ -12,11 +12,11 @@ const IndexPage = () => (
   <>
     <Head />
     <div className="container">
-      <h1>Coronavirus Recovery</h1>
+      <h1>Is COVID-19 over yet?</h1>
       <p>
-        The chart below shows the number of incremental cases of COVID-19 in
-        each country over the last 14 days. Authorities in Wuhan stated they
-        will begin gradually lifting the lockdown once there are no new cases
+        The chart below shows the number of new cases of COVID-19 in each
+        country over the last 14 days. Authorities in Wuhan stated they will
+        begin gradually lifting the lockdown once there are no new cases
         reported for 14 consecutive days [
         <a
           href="https://www.reuters.com/article/us-health-coronavirus-china-media/china-daily-says-wuhans-new-coronavirus-cases-could-cease-by-mid-late-march-idUSKBN21608U"
