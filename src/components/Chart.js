@@ -56,8 +56,10 @@ const HeaderRow = ({ dates }) => (
   <div className="row header-row">
     <div className="row-country-header"></div>
     <div className="case-number-row date-row">
-      {dates.map(date => (
-        <div className="number-display">{date.slice(0, -3)}</div>
+      {dates.map((date, i) => (
+        <div className="number-display" key={i}>
+          {date.slice(0, -3)}
+        </div>
       ))}
     </div>
   </div>
