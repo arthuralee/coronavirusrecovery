@@ -20,6 +20,7 @@ const IndexPage = () => (
         for 14 consecutive days [
         <a
           href="https://www.reuters.com/article/us-health-coronavirus-china-media/china-daily-says-wuhans-new-coronavirus-cases-could-cease-by-mid-late-march-idUSKBN21608U"
+          rel="noopener noreferrer"
           target="_blank
         "
         >
@@ -30,7 +31,11 @@ const IndexPage = () => (
       <Chart data={data} dates={dates} />
       <p>
         Data source:{" "}
-        <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">
+        <a
+          href="https://github.com/CSSEGISandData/COVID-19"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           JHU CSSE Github
         </a>
       </p>
