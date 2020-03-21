@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Coronavirus Recovery`,
+    title: `Is COVID-19 over yet?`,
     description: `Tracking the recovery from the global coronavirus outbreak`,
     author: `Arthur Lee`,
   },
