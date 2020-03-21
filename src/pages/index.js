@@ -15,9 +15,9 @@ const IndexPage = () => (
       <h1>Coronavirus Recovery</h1>
       <p>
         The chart below shows the number of incremental cases of COVID-19 in
-        each country. It was widely reported that the authorities in Wuhan are
-        comfortable with lifting the lockdown if there are no new cases reported
-        for 14 consecutive days [
+        each country over the last 14 days. Authorities in Wuhan stated they
+        will begin gradually lifting the lockdown once there are no new cases
+        reported for 14 consecutive days [
         <a
           href="https://www.reuters.com/article/us-health-coronavirus-china-media/china-daily-says-wuhans-new-coronavirus-cases-could-cease-by-mid-late-march-idUSKBN21608U"
           rel="noopener noreferrer"
