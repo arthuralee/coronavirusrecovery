@@ -53,7 +53,7 @@ const Country = ({ rowData }) => (
 );
 
 const HeaderRow = ({ dates }) => (
-  <div className="row">
+  <div className="row header-row">
     <div className="row-country-header"></div>
     <div className="case-number-row date-row">
       {dates.map(date => (
@@ -64,7 +64,7 @@ const HeaderRow = ({ dates }) => (
 );
 
 export default ({ data, dates }) => (
-  <div>
+  <div className="chart-container">
     <HeaderRow dates={dates} />
     {data.map((row, i) => (
       <Country rowData={row} key={i} />

@@ -1,5 +1,18 @@
+.chart-container {
+  position: relative;
+}
+
+.header-row {
+  position: sticky;
+  top: 0;
+}
+
+.date-row {
+  background-color: #fff;
+}
+
 .row {
-  align-items: center;
+  align-items: stretch;
   display: flex;
   margin: 8px 0;
 }
@@ -8,6 +21,11 @@
   text-overflow: ellipsis;
   width: 150px;
   flex-shrink: 0;
+  position: sticky;
+  left: 0;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .case-number-row {
