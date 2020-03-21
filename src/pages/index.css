@@ -6,6 +6,7 @@ body {
 .container {
   margin: 30px auto;
   max-width: 1140px;
+  padding: 0 20px;
 }
 
 h1 {
