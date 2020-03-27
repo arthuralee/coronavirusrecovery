@@ -1,54 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Chart.css";
 
-function getBackgroundColor(num) {
-  if (num === 0) {
-    return "rgb(150,255,150)";
-  } else if (num <= 100) {
-    const rb = 200 + Math.round(Math.round(num / 10) * 3);
-    const g = 255 - Math.round(Math.round(num / 10) * 2.5);
-    return `rgb(${rb},${g},${rb})`;
+export const DisplayMode = {
+  INCREMENTAL: "incremental",
+  CUMULATIVE: "cumulative",
+};
+
+function getColors(num, displayMode) {
+  let r, g, b;
+  if (displayMode === DisplayMode.INCREMENTAL) {
+    if (num === 0) {
+      r = b = 150;
+      g = 255;
+    } else if (num <= 100) {
+      r = b = 200 + Math.round(Math.round(num / 10) * 3);
+      g = 255 - Math.round(Math.round(num / 10) * 2.5);
+    } else {
+      r = g = b = 230 - Math.round(Math.round(Math.min(3000, num) / 100) * 15);
+    }
   } else {
-    const c = 230 - Math.round(Math.round(Math.min(3000, num) / 100) * 15);
-    return `rgb(${c},${c},${c})`;
+    r = g = b = 50;
   }
+
+  const textColor = (r + r + b + g + g + g) / 6 > 100 ? "#222" : "#fff";
+  return [`rgb(${r},${g},${b})`, textColor];
 }
 
-function getTextColor(num) {
-  if (num > 500) {
-    return "#fff";
-  } else {
-    return "#222";
-  }
-}
-
-const NumberDisplay = ({ number }) => {
+const NumberDisplay = ({ number, displayMode }) => {
   const num = Math.max(number, 0);
+  const [bgColor, textColor] = getColors(num, displayMode);
   return (
     <div
       className="number-display"
       style={{
-        backgroundColor: getBackgroundColor(num),
-        color: getTextColor(num),
+        backgroundColor: bgColor,
+        color: textColor,
       }}
     >
-      +{num}
+      {displayMode === DisplayMode.INCREMENTAL ? "+" : ""}
+      {num}
     </div>
   );
 };
 
-const CaseNumberRow = ({ incremental, cumulative }) => (
+const CaseNumberRow = ({ row, displayMode }) => (
   <div className="case-number-row">
-    {incremental.map((num, i) => (
-      <NumberDisplay number={num} key={i} />
+    {row.map((num, i) => (
+      <NumberDisplay number={num} key={i} displayMode={displayMode} />
     ))}
   </div>
 );
 
-const Country = ({ rowData }) => (
+const Country = ({ dates, data, displayMode }) => (
   <div className="row">
-    <div className="row-country-header">{rowData[0]}</div>
-    <CaseNumberRow incremental={rowData[2]} cumulative={rowData[1]} />
+    <div className="row-country-header">{dates}</div>
+    <CaseNumberRow row={data} displayMode={displayMode} />
   </div>
 );
 
@@ -65,11 +71,19 @@ const HeaderRow = ({ dates }) => (
   </div>
 );
 
-export default ({ data, dates }) => (
-  <div className="chart-container">
-    <HeaderRow dates={dates} />
-    {data.map((row, i) => (
-      <Country rowData={row} key={i} />
-    ))}
-  </div>
-);
+export default ({ data, dates }) => {
+  const [displayMode, setDisplayMode] = useState(DisplayMode.INCREMENTAL);
+  return (
+    <div className="chart-container">
+      <HeaderRow dates={dates} />
+      {data.map((row, i) => (
+        <Country
+          dates={row[0]}
+          data={displayMode === DisplayMode.INCREMENTAL ? row[2] : row[1]}
+          key={i}
+          displayMode={displayMode}
+        />
+      ))}
+    </div>
+  );
+};
