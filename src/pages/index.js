@@ -46,6 +46,7 @@ const IndexPage = () => (
             We're open source on{" "}
             <a
               href="https://github.com/arthuralee/coronavirusrecovery"
+              rel="noopener noreferrer"
               target="_blank"
             >
               github
