@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Chart.css";
+import Switch from "./Switch";
 
 export const DisplayMode = {
   INCREMENTAL: "incremental",
@@ -19,10 +20,10 @@ function getColors(num, displayMode) {
       r = g = b = 230 - Math.round(Math.round(Math.min(3000, num) / 100) * 15);
     }
   } else {
-    r = g = b = 50;
+    r = g = b = 240 - Math.min(100000, num) / 240;
   }
 
-  const textColor = (r + r + b + g + g + g) / 6 > 100 ? "#222" : "#fff";
+  const textColor = (r + r + b + g + g + g) / 6 > 130 ? "#222" : "#fff";
   return [`rgb(${r},${g},${b})`, textColor];
 }
 
@@ -75,6 +76,15 @@ export default ({ data, dates }) => {
   const [displayMode, setDisplayMode] = useState(DisplayMode.INCREMENTAL);
   return (
     <div className="chart-container">
+      <Switch
+        offLabel="Incremental"
+        onLabel="Cumulative"
+        onSwitch={isOn =>
+          setDisplayMode(
+            isOn ? DisplayMode.CUMULATIVE : DisplayMode.INCREMENTAL
+          )
+        }
+      />
       <HeaderRow dates={dates} />
       {data.map((row, i) => (
         <Country
