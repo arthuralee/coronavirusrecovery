@@ -9,6 +9,24 @@ body {
   padding: 0 20px;
 }
 
+.column-wrapper {
+  display: flex;
+}
+
+.column-wrapper .right {
+  text-align: right;
+  width: 500px;
+}
+
+@media (max-width: 860px) {
+  .column-wrapper {
+    display: block;
+  }
+  .column-wrapper .right {
+    text-align: left;
+  }
+}
+
 h1 {
   font-size: 30px;
   margin-bottom: 15px;
