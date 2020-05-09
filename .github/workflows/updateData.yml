@@ -1,0 +1,23 @@
+name: Update data and publish
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  update:
+    name: Update data
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - run: npm install
+    - run: node updateData.js
+    - uses: stefanzweifel/git-auto-commit-action@v4.1.6
+      with:
+        commit_message: Automatic data update
+    - run: npm run deploy
