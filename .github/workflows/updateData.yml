@@ -3,6 +3,8 @@ name: Update data and publish
 on:
   schedule:
     - cron: "0 6 * * *"
+  issue_comment:
+    types: [created, deleted]
 
 jobs:
   update:
