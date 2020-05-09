@@ -22,4 +22,10 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4.1.6
       with:
         commit_message: Automatic data update
-    - run: npm run deploy
+    - run: npm run build
+    - name: Deploy to gh pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: public
